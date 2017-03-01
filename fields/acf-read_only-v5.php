@@ -52,7 +52,7 @@ class acf_field_read_only extends acf_field {
 		*/
 		
 		$this->defaults = array(
-			'font_size'	=> 14,
+			'copy_to_clipboard'	=> false,
 		);
 		
 		
@@ -105,11 +105,19 @@ class acf_field_read_only extends acf_field {
 		*/
 		
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Font Size','acf-read_only'),
-			'instructions'	=> __('Customise the input font size','acf-read_only'),
-			'type'			=> 'number',
-			'name'			=> 'font_size',
-			'prepend'		=> 'px',
+			'label'			=> __('Copy-to-clipboard button','acf-read_only'),
+			'type'			=> 'true_false',
+			'name'			=> 'copy_to_clipboard',
+		));
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Display type','acf-read_only'),
+			'type'			=> 'select',
+			'name'			=> 'display_type',
+			'choices' => array(
+				'text'	=> 'Text',
+				'link'	=> 'Link',
+			),
 		));
 
 	}
@@ -138,18 +146,35 @@ class acf_field_read_only extends acf_field {
 		*  Review the data of $field.
 		*  This will show what data is available
 		*/
-		
+		/*
 		echo '<pre>';
 			print_r( $field );
 		echo '</pre>';
-		
+		*/
 		
 		/*
 		*  Create a simple text input using the 'font_size' setting.
 		*/
 		
 		?>
-		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
+		<div>
+			<?php if ($field['display_type'] == 'text'): ?>
+				<span><?php echo esc_attr($field['value']) ?></span>
+			<?php elseif ($field['display_type'] == 'link'): ?>
+				<a href="<?php echo esc_attr($field['value']) ?>" target="_blank"><?php echo esc_attr($field['label']) ?></a>
+			<?php endif; ?>			
+			<?php if ($field['copy_to_clipboard']): ?>
+				<a href="#" class="js-aro-clipboard-trigger" data-clipboard-text="<?php echo esc_attr($field['value']) ?>">(<?php _e('Copy','acf-read_only') ?>)</a>
+			<?php endif; ?>
+		</div>
+		<input type="hidden" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" />
+
+		<?php if ($field['copy_to_clipboard']): ?>
+			<script>
+				new Clipboard('.js-aro-clipboard-trigger');
+			</script>
+		<?php endif; ?>
+
 		<?php
 	}
 	
@@ -168,7 +193,7 @@ class acf_field_read_only extends acf_field {
 	*  @return	n/a
 	*/
 
-	/*
+	
 	
 	function input_admin_enqueue_scripts() {
 		
@@ -178,17 +203,19 @@ class acf_field_read_only extends acf_field {
 		
 		
 		// register & include JS
-		wp_register_script( 'acf-input-read_only', "{$url}assets/js/input.js", array('acf-input'), $version );
+		//wp_register_script( 'acf-input-read_only', "{$url}assets/js/input.js", array('acf-input'), $version );
+		//wp_enqueue_script('acf-input-read_only');
+		wp_register_script( 'acf-input-read_only', "{$url}assets/js/clipboard.min.js", array('acf-input'), $version );
 		wp_enqueue_script('acf-input-read_only');
 		
 		
 		// register & include CSS
-		wp_register_style( 'acf-input-read_only', "{$url}assets/css/input.css", array('acf-input'), $version );
-		wp_enqueue_style('acf-input-read_only');
+		//wp_register_style( 'acf-input-read_only', "{$url}assets/css/input.css", array('acf-input'), $version );
+		//wp_enqueue_style('acf-input-read_only');
 		
 	}
 	
-	*/
+	
 	
 	
 	/*
