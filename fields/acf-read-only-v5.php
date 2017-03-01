@@ -5,10 +5,10 @@ if( ! defined( 'ABSPATH' ) ) exit;
 
 
 // check if class already exists
-if( !class_exists('acf_field_FIELD_NAME') ) :
+if( !class_exists('acf_field_read_only') ) :
 
 
-class acf_field_FIELD_NAME extends acf_field {
+class acf_field_read_only extends acf_field {
 	
 	
 	/*
@@ -30,14 +30,14 @@ class acf_field_FIELD_NAME extends acf_field {
 		*  name (string) Single word, no spaces. Underscores allowed
 		*/
 		
-		$this->name = 'FIELD_NAME';
+		$this->name = 'read_only';
 		
 		
 		/*
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
 		
-		$this->label = __('FIELD_LABEL', 'acf-FIELD_NAME');
+		$this->label = __('Read only', 'acf-read_only');
 		
 		
 		/*
@@ -58,11 +58,11 @@ class acf_field_FIELD_NAME extends acf_field {
 		
 		/*
 		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
-		*  var message = acf._e('FIELD_NAME', 'error');
+		*  var message = acf._e('read_only', 'error');
 		*/
 		
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'acf-FIELD_NAME'),
+			'error'	=> __('Error! Please enter a higher value', 'acf-read_only'),
 		);
 		
 		
@@ -105,8 +105,8 @@ class acf_field_FIELD_NAME extends acf_field {
 		*/
 		
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Font Size','acf-FIELD_NAME'),
-			'instructions'	=> __('Customise the input font size','acf-FIELD_NAME'),
+			'label'			=> __('Font Size','acf-read_only'),
+			'instructions'	=> __('Customise the input font size','acf-read_only'),
 			'type'			=> 'number',
 			'name'			=> 'font_size',
 			'prepend'		=> 'px',
@@ -178,13 +178,13 @@ class acf_field_FIELD_NAME extends acf_field {
 		
 		
 		// register & include JS
-		wp_register_script( 'acf-input-FIELD_NAME', "{$url}assets/js/input.js", array('acf-input'), $version );
-		wp_enqueue_script('acf-input-FIELD_NAME');
+		wp_register_script( 'acf-input-read_only', "{$url}assets/js/input.js", array('acf-input'), $version );
+		wp_enqueue_script('acf-input-read_only');
 		
 		
 		// register & include CSS
-		wp_register_style( 'acf-input-FIELD_NAME', "{$url}assets/css/input.css", array('acf-input'), $version );
-		wp_enqueue_style('acf-input-FIELD_NAME');
+		wp_register_style( 'acf-input-read_only', "{$url}assets/css/input.css", array('acf-input'), $version );
+		wp_enqueue_style('acf-input-read_only');
 		
 	}
 	
@@ -443,7 +443,7 @@ class acf_field_FIELD_NAME extends acf_field {
 		// Advanced usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
-			$valid = __('The value is too little!','acf-FIELD_NAME'),
+			$valid = __('The value is too little!','acf-read_only'),
 		}
 		
 		
@@ -557,7 +557,7 @@ class acf_field_FIELD_NAME extends acf_field {
 
 
 // initialize
-new acf_field_FIELD_NAME( $this->settings );
+new acf_field_read_only( $this->settings );
 
 
 // class_exists check
