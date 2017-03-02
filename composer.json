@@ -1,0 +1,13 @@
+{
+    "name": "quantity-digital/acf-read-only",
+    "description": "Read only field for data that is manipulated only on the backend, but should be visible to the WP admins. Includes options to display a copy-to-clipboard link.",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolaj Kirkegaard Nielsen",
+            "email": "nn@quantitydigital.com"
+        }
+    ],
+    "require": {}
+}
