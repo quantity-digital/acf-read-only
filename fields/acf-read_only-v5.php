@@ -62,7 +62,7 @@ class acf_field_read_only extends acf_field {
 		*/
 		
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'acf-read_only'),
+			//'error'	=> __('Error! Please enter a higher value', 'acf-read_only'),
 		);
 		
 		
@@ -115,8 +115,9 @@ class acf_field_read_only extends acf_field {
 			'type'			=> 'select',
 			'name'			=> 'display_type',
 			'choices' => array(
-				'text'	=> 'Text',
-				'link'	=> 'Link',
+				'text'	  => 'Text',
+				'link'	  => 'Link',
+				'boolean' => 'Boolean (True/False)'
 			),
 		));
 
@@ -162,6 +163,14 @@ class acf_field_read_only extends acf_field {
 				<span><?php echo esc_attr($field['value']) ?></span>
 			<?php elseif ($field['display_type'] == 'link'): ?>
 				<a href="<?php echo esc_attr($field['value']) ?>" target="_blank"><?php echo esc_attr($field['label']) ?></a>
+			<?php elseif ($field['display_type'] == 'boolean'): ?>
+				<span>
+					<?php if ( $field['value'] == true ): ?>
+						<span class="dashicons dashicons-yes" style="font-size: 20px;color:green;"></span> True
+					<?php else: ?>
+					<span class="dashicons dashicons-no" style="font-size: 20px;color:red;"></span> False
+					<?php endif; ?>
+				</span>
 			<?php endif; ?>			
 			<?php if ($field['copy_to_clipboard']): ?>
 				<a href="#" class="js-aro-clipboard-trigger" data-clipboard-text="<?php echo esc_attr($field['value']) ?>">(<?php _e('Copy','acf-read_only') ?>)</a>

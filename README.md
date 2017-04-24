@@ -22,6 +22,10 @@ This ACF field type is compatible with:
 
 ### Changelog
 
+#### [0.4.0] - 2017-04-24
+##### Added
+- Add Boolean (True/False) type.
+
 #### [0.3.0] - 2017-03-01
 ##### Added
 - Display type option (link or text).
