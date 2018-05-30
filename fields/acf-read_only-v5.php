@@ -117,7 +117,8 @@ class acf_field_read_only extends acf_field {
 			'choices' => array(
 				'text'	  => 'Text',
 				'link'	  => 'Link',
-				'boolean' => 'Boolean (True/False)'
+				'boolean' => 'Boolean (True/False)',
+				'pre'     => 'Preformatted',
 			),
 		));
 
@@ -171,6 +172,10 @@ class acf_field_read_only extends acf_field {
 					<span class="dashicons dashicons-no" style="font-size: 20px;color:red;"></span> False
 					<?php endif; ?>
 				</span>
+			<?php elseif ($field['display_type'] == 'pre'): ?>
+				<pre>
+					<span><?php echo esc_attr($field['value']) ?></span>
+				</pre>
 			<?php endif; ?>			
 			<?php if ($field['copy_to_clipboard']): ?>
 				<a href="#" class="js-aro-clipboard-trigger" data-clipboard-text="<?php echo esc_attr($field['value']) ?>">(<?php _e('Copy','acf-read_only') ?>)</a>

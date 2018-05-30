@@ -22,6 +22,10 @@ This ACF field type is compatible with:
 
 ### Changelog
 
+#### [0.5.0] - 2018-05-30
+##### Added
+- Add Preformatted type.
+
 #### [0.4.0] - 2017-04-24
 ##### Added
 - Add Boolean (True/False) type.
