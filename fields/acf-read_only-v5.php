@@ -173,9 +173,7 @@ class acf_field_read_only extends acf_field {
 					<?php endif; ?>
 				</span>
 			<?php elseif ($field['display_type'] == 'pre'): ?>
-				<pre>
-					<?php echo esc_attr($field['value']) ?>
-				</pre>
+				<pre><?php echo esc_attr($field['value']) ?></pre>
 			<?php endif; ?>			
 			<?php if ($field['copy_to_clipboard']): ?>
 				<a href="#" class="js-aro-clipboard-trigger" data-clipboard-text="<?php echo esc_attr($field['value']) ?>">(<?php _e('Copy','acf-read_only') ?>)</a>
