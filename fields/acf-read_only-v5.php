@@ -119,6 +119,7 @@ class acf_field_read_only extends acf_field {
 				'link'	  => 'Link',
 				'boolean' => 'Boolean (True/False)',
 				'pre'     => 'Preformatted',
+				'img'     => 'Image',
 			),
 		));
 
@@ -176,7 +177,9 @@ class acf_field_read_only extends acf_field {
 				<pre>
 					<span><?php echo esc_attr($field['value']) ?></span>
 				</pre>
-			<?php endif; ?>			
+			<?php elseif ($field['display_type'] == 'img'): ?>
+				<span><img src="<?php echo esc_attr($field['value']) ?>" width="100%"></span>
+			<?php endif; ?>
 			<?php if ($field['copy_to_clipboard']): ?>
 				<a href="#" class="js-aro-clipboard-trigger" data-clipboard-text="<?php echo esc_attr($field['value']) ?>">(<?php _e('Copy','acf-read_only') ?>)</a>
 			<?php endif; ?>
