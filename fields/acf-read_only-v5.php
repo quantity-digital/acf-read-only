@@ -174,9 +174,7 @@ class acf_field_read_only extends acf_field {
 					<?php endif; ?>
 				</span>
 			<?php elseif ($field['display_type'] == 'pre'): ?>
-				<pre>
-					<span><?php echo esc_attr($field['value']) ?></span>
-				</pre>
+				<pre><?php echo esc_attr($field['value']) ?></pre>
 			<?php elseif ($field['display_type'] == 'img'): ?>
 				<span><img src="<?php echo esc_attr($field['value']) ?>" width="100%"></span>
 			<?php endif; ?>

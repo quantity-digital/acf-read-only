@@ -4,7 +4,7 @@
 Plugin Name: Advanced Custom Fields: Read only
 Plugin URI: https://github.com/quantity-digital/acf-read-only
 Description: Read only ACF field
-Version: 0.5.0
+Version: 0.5.2
 Author: Quantity Digital
 Author URI: http://quantitydigital.com/
 License: GPLv2 or later
@@ -37,7 +37,7 @@ class acf_plugin_read_only {
 		
 		// vars
 		$this->settings = array(
-			'version'	=> '0.5.0',
+			'version'	=> '0.5.2',
 			'url'		=> plugin_dir_url( __FILE__ ),
 			'path'		=> plugin_dir_path( __FILE__ )
 		);
