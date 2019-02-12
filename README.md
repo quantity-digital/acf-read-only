@@ -22,6 +22,10 @@ This ACF field type is compatible with:
 
 ### Changelog
 
+#### [0.6.0] - 2019-02-12
+##### Added
+- Add Image type.
+
 #### [0.5.0] - 2018-05-30
 ##### Added
 - Add Preformatted type.
